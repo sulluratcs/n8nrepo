@@ -1,14 +1,10 @@
-# Use the official n8n image from their registry as the base image.
-# This corresponds to the `docker.n8n.io/n8nio/n8n` part of your command.
-FROM docker.n8n.io/n8nio/n8n
+# Use the official Docker Hub mirror to avoid 429 rate limit errors
+FROM docker.io/n8nio/n8n:latest
 
-# Expose port 5678 from the container.
-# This corresponds to the `-p 5678:5678` part, informing the environment
-# which port the application inside the container is listening on.
+# Expose the default n8n port
 EXPOSE 5678
 
-# Declare a volume for persistent data.
-# This corresponds to the `-v ~/.n8n:/home/node/.n8n` part, marking the
-# directory where n8n stores its data as a mount point for persistent storage.
+# Declare the persistent volume directory
 VOLUME /home/node/.n8n
+
 
