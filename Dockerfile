@@ -1,10 +1,8 @@
-# Use the official Docker Hub mirror to avoid 429 rate limit errors
-FROM docker.io/n8nio/n8n:latest
+FROM docker.n8n.io/n8nio/n8n:latest
 
-# Expose the default n8n port
+# SnapDeploy expects the app to listen on a port; n8n uses 5678
 EXPOSE 5678
 
-# Declare the persistent volume directory
-VOLUME /home/node/.n8n
+# n8n runs as the "node" user by default in the official image
 
 
